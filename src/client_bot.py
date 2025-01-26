@@ -3,6 +3,7 @@ import cv2, imutils, socket
 import numpy as np
 import time
 import base64
+#from ultralytics import YOLO
 
 BUFF_SIZE = 65536
 client_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
@@ -12,6 +13,7 @@ host_ip = socket.gethostbyname(host_name)
 print(host_ip)
 port = 9999
 message = b"Hello"
+#model = YOLO("./models/coco_weights.pt")
 
 testmode = (
     1  # To display images to verify. Set to zero if not intrested in displaying images.
@@ -49,6 +51,7 @@ while True:
     )
     # cv2.imshow("RECEIVING VIDEO", frame)
     frame = cv2.resize(frame, (frame_width, frame_height))
+    #results = model.predict(source=frame)
     original_frame = (
         frame.copy()
     )  # Copy of frame which will be used for to compare with other images after appling various operations.
